@@ -18,9 +18,9 @@ otel_requires = read_requirements("requirements-otel.txt")
 
 setup(
     # Package metadata
-    name="prefect",
-    description="Workflow orchestration and management.",
-    author="Prefect Technologies, Inc.",
+    name="prefect_jks",
+    description="Workflow orchestration and management. This fork was created for customized purposes.",
+    author="Prefect Technologies, Inc., Jackson Nguyen",
     author_email="help@prefect.io",
     url="https://www.prefect.io",
     project_urls={
