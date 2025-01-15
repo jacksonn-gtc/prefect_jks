@@ -406,6 +406,46 @@ async def update_progress_artifact(
 
     return artifact_id
 
+@sync_compatible
+async def update_markdown_artifact(
+    artifact_id: UUID,
+    markdown: str,
+    description: Optional[str] = None,
+    client: Optional[PrefectClient] = None,
+) -> UUID:
+    """
+    Update a Markdown artifact. HFW CUSTOM
+
+    Arguments:
+        artifact_id: The ID of the artifact to update.
+        markdown: The markdown string for this artifact.
+        description: A user-specified description of the artifact.
+
+    Returns:
+        The markdown artifact ID.
+    """
+
+    client, _ = get_or_create_client(client)
+
+    artifact = MarkdownArtifact(
+        description=description,
+        markdown=markdown,
+    )
+    update = (
+        ArtifactUpdate(
+            description=artifact.description,
+            data=await artifact.format(),
+        )
+        if description
+        else ArtifactUpdate(data=await artifact.format())
+    )
+
+    await client.update_artifact(
+        artifact_id=artifact_id,
+        artifact=update,
+    )
+
+    return artifact_id
 
 @sync_compatible
 async def create_image_artifact(
