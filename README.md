@@ -18,8 +18,6 @@
 
 # Prefect
 
-This repository is a fork of the [original Prefect repository](https://github.com/PrefectHQ/prefect), maintained for custom purposes.
-
 Prefect is a workflow orchestration framework for building data pipelines in Python.
 It's the simplest way to elevate a script into a resilient production workflow.
 With Prefect, you can build resilient, dynamic data pipelines that react to the world around them and recover from unexpected changes.
